@@ -14,28 +14,51 @@ Yatri is your gateway to immersive travel experiences, offering a curated select
 - HTML, CSS, and JavaScript for the frontend.
 - Bootstrap for responsive design.
 
-##Usage
-Explore Destinations
+## Usage
 
-Navigate to the Explore section.
-Click on destination cards for details.
-Use the interactive map to explore locations.
-Upcoming Events
+1. **Explore Destinations**
+   - Navigate to the Explore section.
+   - Click on destination cards for details.
+   - Use the interactive map to explore locations.
 
-Visit the Events section.
-Check event details and dates.
-User Reviews
+2. **Upcoming Events**
+   - Visit the Events section.
+   - Check event details and dates.
 
-Browse reviews in the Reviews section.
-Submit your own review with photos.
-Interactive Maps
+3. **User Reviews**
+   - Browse reviews in the Reviews section.
+   - Submit your own review with photos.
 
-Use the map to visualize destinations.
-Click on markers for detailed information.
-Contact Us
+4. **Interactive Maps**
+   - Use the map to visualize destinations.
+   - Click on markers for detailed information.
 
-Go to the Contact Us page.
-Fill out the form or use provided contact details.
+5. **Contact Us**
+   - Go to the Contact Us page.
+   - Fill out the form or use provided contact details.
+
+---
+
+## API Integration
+
+YATRI integrates with the following APIs:
+
+- **Mapbox API**: Provides interactive maps with location details and markers.
+
+---
+
+## Contributing
+
+We welcome contributions to improve YATRI. To contribute:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/improvement`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/improvement`).
+6. Create a new Pull Request.
+
+---
 ## Contributing
 We welcome contributions from the community! Fork the repository and submit pull requests for feature enhancements or bug fixes.
 
