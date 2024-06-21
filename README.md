@@ -14,13 +14,28 @@ Yatri is your gateway to immersive travel experiences, offering a curated select
 - HTML, CSS, and JavaScript for the frontend.
 - Bootstrap for responsive design.
 
-## Usage
-1. Explore destinations and activities on the homepage.
-2. Click on a destination to view detailed information.
-3. Use the interactive map for navigation and planning.
-4. Book tours, accommodations, and activities seamlessly.
-5. Access travel guides and tips for a smooth experience.
-6. 
+##Usage
+Explore Destinations
+
+Navigate to the Explore section.
+Click on destination cards for details.
+Use the interactive map to explore locations.
+Upcoming Events
+
+Visit the Events section.
+Check event details and dates.
+User Reviews
+
+Browse reviews in the Reviews section.
+Submit your own review with photos.
+Interactive Maps
+
+Use the map to visualize destinations.
+Click on markers for detailed information.
+Contact Us
+
+Go to the Contact Us page.
+Fill out the form or use provided contact details.
 ## Contributing
 We welcome contributions from the community! Fork the repository and submit pull requests for feature enhancements or bug fixes.
 
