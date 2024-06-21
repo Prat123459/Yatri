@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>YATRI</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/responsive.css" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="img/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="img/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="img/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+    </head>
+    <body
+        onload='if (window.location.href.substr(window.location.href.length - 6) == "#about") { introAboutLogoTransition(); }'
+    >
+        <!--navbar-->
+        <nav class="navbar glass" style="height: 70px">
+            <span
+                ><a href="#home" style="display: flex; align-items: center"
+                    ><img
+                        class="img2"
+                        src="./img/mountain.png"
+                        width="40"
+                        style="margin: -25px -10px -25px -20px"
+                    />
+                    <h1 class="logo">&nbsp;YATRI</h1></a
+                ></span
+            >
+            <ul class="nav-links">
+                <li>
+                    <a href="#home" id="pri" class="active cir_border">Home</a>
+                </li>
+                <li><a href="#events" id="sec" class="cir_border">Events</a></li>
+                <li>
+                    <a href="#explore" id="tri" class="cir_border">Explore</a>
+                </li>
+                <li>
+                    <a href="#tours" id="quad" class="cir_border">Tours</a>
+                </li>
+                <li><a href="#about" id="quint" class="cir_border">About</a></li>
+                 
+                  <li><a href="#reviews" id="hept" class="cir_border">Reviews</a></li>
+                  <li>
+                    <a href="#contact" id="hept" class="cir_border">Contact</a>
+                </li>
+              
+             <div><li>
+                <a href="#" id="hept" class="cir_border" onclick="openInNewTab('decide.html')">Let Us Decide</a>
+            </li>
+            
+            
+            <script>
+            function openInNewTab(url) {
+                var win = window.open(url, '_blank');
+                if (win) {
+                    win.focus();
+                } else {
+                    window.location.href = url;
+                }
+            }
+            
+            </script>
+            </div>
+          
+            
+                <li>
+                    <div>
+                        <input
+                            type="checkbox"
+                            class="checkbox dark"
+                            id="checkbox"
+                        />
+                        <label for="checkbox" class="label">
+                            <i class="fa fa-moon-o"></i>
+                            <i class="fa fa-sun-o"></i>
+                            <div class="ball"></div>
+                        </label>
+                    </div>
+                </li>
+                
+            </ul>
+            <img src="./img/menu-btn.png" alt="" class="menu-btn" />
+        </nav>
+        <!--navbar-->
+
+        <header id="home">
+            <div class="header-content">
+                <br>
+                <br>
+                <h2 id="quote">Explore the Nature</h2>
+                <div class="line"></div>
+                <h1>"Take only memories, leave only footprints"</h1>
+                <a
+                    href="#explore"
+                    class="ctn"
+                    onclick='removeall(); $("#quad").css("border", "2px solid whitesmoke"); $("#quad").css("border-radius", "20px");'
+                    >Learn more</a
+                >
+            </div>
+        </header>
+
+<div>
+     <style>
+        .events {
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px; /* Added border radius for curved corners */
+            background-color: #eff0f5; /* Added background color */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Added hovering effect */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added box shadow on hover */
+        }
+
+        .card img {
+            width: 80%; /* Adjusted width */
+            height: auto;
+            margin-bottom: 10px; /* Added margin for image */
+            margin-left: 13px;
+        }
+
+        .card h4,
+        .card p,
+        .more-details p {
+            color: black; /* Set text color to black */
+        }
+
+        .card h4 {
+            margin: 15px 0 10px;
+        }
+
+        .card p {
+            margin: 10px 0;
+        }
+
+        .more-details {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(238, 243, 245);
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card.active .more-details {
+            display: block;
+            transform: scale(1);
+        }
+
+        .card.active .card-content {
+            transform: scale(0);
+        }
+
+        .card-content {
+            position: relative;
+            min-height: 200px; /* Adjust as needed */
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: rgb(117, 171, 207);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+<!--Events-->
+<section class="events" id="events">
+    <div class="container">
+        <div class="title">
+            <h1 class="dark">Upcoming Events</h1>
+            <div class="line"></div>
+        </div>
+        <div class="row">
+            <article class="card col" onclick="toggleDetails(this)">
+                <div class="card-content">
+                    <img class="card-img" src="./img/kedar.jpg" />
+                    <h4 class="dark">Kedarkanta trek</h4>
+                    <p class="font-color">
+                        Accessible winter paths through stunning Himalayan landscapes.
+                    </p>
+                </div>
+                <div class="more-details">
+                    <span class="back-btn" onclick="toggleVisibility(this.parentElement)">Back</span>
+                    <p class="font-color">   <table style="margin-top: 10px; font-size: 16px;">
+                        <tr>
+                            <td style="padding-bottom: 10px;">Best Time to Go:</td>
+                            <td style="padding-bottom: 10px;">Winter season (December to March)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Location:</td>
+                            <td style="padding-bottom: 10px;">Uttarakhand, India</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Temperature:</td>
+                            <td style="padding-bottom: 10px;">Ranges from -5°C to 10°C during the trek</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Location:</td>
+                            <td style="padding-bottom: 10px;"><a href="https://maps.app.goo.gl/iQJ7SFAZcywPeqLF9" target="_blank">View on Google Maps</a></td>
+                        </tr>
+                        <tr>
+
+
+                            <td style="padding-bottom: 10px;">Charge:</td>
+                            <td style="padding-bottom: 10px;">Approximately ₹1800 per person</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="https://www.makemytrip.com/hotels/kedarkantha_trek-details-mori.html" target="_blank" style="color: blue; text-decoration: underline;">Register Now</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a class="ctn" style="color: rgb(229, 232, 235);  cursor: pointer;">All Details</a>
+            </article>
+            <article class="card col" onclick="toggleDetails(this)">
+                <div class="card-content">
+                    <img class="card-img" src="./img/ooty.jpg" />
+                    <h4 class="dark">Ooty</h4>
+                    <p class="font-color">
+                        Nilgiri's scenic gem, blending tea gardens, botanical wonders, and hillside charm for an enchanting retreat.
+                    </p>
+                </div>
+                <div class="more-details">
+                    <span class="back-btn" onclick="toggleVisibility(this.parentElement)">Back</span>
+                    <p class="font-color">
+                        <table style="margin-top: 10px; font-size: 16px;">
+                            <tr>
+                                <td style="padding-bottom: 10px;">Best Time to Go:</td>
+                                <td style="padding-bottom: 10px;">Whole Year</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;">Location:</td>
+                                <td style="padding-bottom: 10px;">Tamil Nadu,India</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;">Temperature:</td>
+                                <td style="padding-bottom: 10px;">Ranges from -2°C to 17°C during the trek</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;">Location:</td>
+                                <td style="padding-bottom: 10px;"><a href="https://maps.app.goo.gl/oZipF6X85cxbp8RK7" target="_blank">View on Google Maps</a></td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 10px;">Charge:</td>
+                                <td style="padding-bottom: 10px;">Approximately ₹4800 per person</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="https://www.makemytrip.com/holidays-india/ooty-travel-packages.html" target="_blank" style="color: blue; text-decoration: underline;">Register Now</a>
+                                </td>
+                            </tr>
+                        </table></p>
+                </div>
+                <a class="ctn" style="color: rgb(233, 233, 240); cursor: pointer;">All Details</a>
+            </article>
+            <article class="card col" onclick="toggleDetails(this)">
+                <div class="card-content">
+                    <img class="card-img" src="./img/lad.jpg" />
+                    <h4 class="dark">Ladakh</h4>
+                    <p class="font-color">
+                        Rugged landscapes, and spiritual serenity in the heart of the Himalayas.
+                    </p>
+                </div>
+                <div class="more-details">
+                    <span class="back-btn" onclick="toggleVisibility(this.parentElement)">Back</span>
+                    <p class="font-color"><table style="margin-top: 10px; font-size: 16px;">
+                        <tr>
+                            <td style="padding-bottom: 10px;">Best Time to Go:</td>
+                            <td style="padding-bottom: 10px;">Winter season (December to March)</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Location:</td>
+                            <td style="padding-bottom: 10px;">Jammu, India</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Temperature:</td>
+                            <td style="padding-bottom: 10px;">Ranges from -3°C to 25°C during the trek</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Location:</td>
+                            <td style="padding-bottom: 10px;"><a href="https://maps.app.goo.gl/iQJ7SFAZcywPeqLF9" target="_blank">View on Google Maps</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 10px;">Charge:</td>
+                            <td style="padding-bottom: 10px;">Approximately ₹2230 per person</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="https://www.makemytrip.com/holidays-india/ladakh-travel-packages.html" target="_blank" style="color: blue; text-decoration: underline;">Register Now</a>
+                            </td>
+                        </tr>
+                    </table></p>
+                </div>
+                <a class="ctn" style="color: rgb(232, 232, 240);  cursor: pointer;">All Details</a>
+            </article>
+            <!-- Add more articles for other cards -->
+        </div>
+    </div>
+</section>
+<!--Events-->
+</div>
+
+
+<section class="explore" id="explore">
+    <div class="explore-content">
+        <h1>Who are we</h1>
+        <div class="line"></div>
+        <video width="480" height="270" controls>
+            <source src="img\invideo-ai-1080 Explore Nature with Yatri! 2024-06-21 (2).mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</section>
+
+
+
+        <!--tours-->
+        <section class="tours" id="tours">
+            <div class="container row">
+                <div class="col content-col">
+                    <h1 class="font-color">UPCOMING TOURS & DESTINATIONS</h1>
+                    <div class="line"></div>
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <tr>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2; color: black;">Date</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2; color: black;">Tour</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2; color: black;">Details</th>
+                            <th style="padding: 10px; border: 1px solid #ddd; background-color: #f2f2f2; color: black;">Booking</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sat 15 Oct 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Jaipur Heritage Tour</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Experience the royal grandeur of the Pink City, Jaipur, with its majestic forts and palaces.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sat 20 Oct 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Goa Beach Tour</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Relax on Goa's sun-kissed beaches, savor the local cuisine, and enjoy vibrant nightlife.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Fri 25 Oct 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Kerala Backwaters</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Cruise through the serene backwaters of Kerala, surrounded by lush greenery and tranquil waters.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sat 30 Oct 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Desert Safari</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Explore the golden sands of the Thar Desert and experience the rich culture of Rajasthan.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sat 05 Nov 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Himachal Adventure</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Embark on an adventure in the Himalayas, with trekking, paragliding, and river rafting.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Sat 10 Nov 2023</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"> Spiritual Tour</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Dive into the spiritual essence of Varanasi, with its ancient temples, ghats, and the sacred Ganges River.</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform?usp=sf_link" target="_blank">Link</a></td>
+                        </tr>
+                        <tr>
+                           
+                            <th colspan="4" style="padding: 10px; border: 1px solid #ddd; "><a href="decide.html" target="_blank">More Destinations</a></td>
+                        </tr>
+                    </table>
+                    
+
+                </div>
+                <br>
+                <br>
+                <div>
+                    <style>
+                        .bestselling-packages {
+                            text-align: center;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            padding: 20px 0; /* Add padding for spacing */
+                        }
+                
+                        .titl {
+                            position: relative;
+                            font-family: sans-serif;
+                            text-transform: uppercase;
+                            font-size: 2em;
+                            letter-spacing: 4px;
+                            overflow: hidden;
+                            background: linear-gradient(45deg, #00f300, #edeff0f5, #f1183c);
+                            background-repeat: no-repeat;
+                            background-size: 80%;
+                            animation: animate 8s linear infinite;
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                        }
+                
+                        .car-container {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+                        }
+                
+                        .row {
+                            display: flex;
+                            gap: 20px;
+                        }
+                
+                        .car {
+                            flex: 1;
+                            height: 450px;
+                            width: 400px;
+                            background-color: #333;
+                            border-radius: 8px;
+                            overflow: hidden;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            transition: transform 0.3s ease;
+                        }
+                
+                        .car:hover {
+                            transform: translateY(-5px);
+                        }
+                
+                        .car img {
+                            width: 100%;
+                            height: 240px;
+                            transform: scale(0.9); /* Zoom out by 10% */
+                            transition: transform 0.3s ease;
+                        }
+                
+                        .car img:hover {
+                            transform: scale(1); /* Zoom back to original on hover */
+                        }
+                
+                        .car-content {
+                            padding: 20px;
+                        }
+                
+                        .car h3 {
+                            margin-bottom: 10px;
+                            color: #fff;
+                            font-size: 18px;
+                        }
+                
+                        .car p {
+                            color: #bbb;
+                            font-size: 14px;
+                        }
+                
+                        .car table {
+                            width: 100%; /* Increase table width */
+                            background: rgba(255, 255, 255, 0.1);
+                            border-collapse: collapse;
+                            margin-top: 10px;
+                       
+                        }
+                
+                        .car table, .car th, .car td {
+                            border: none; /* Remove table borders */
+                        }
+                
+                        .car th, .car td {
+                            padding: 8px;
+                            text-align: center;
+                            color: #fff;
+                        }
+                
+                        .car th {
+                            background-color: rgba(255, 255, 255, 0.2);
+                        }
+                        .register-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .register-button-container a {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4CAF50; /* Green color */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .register-button-container a:hover {
+        background-color: #45a049; /* Darker green color on hover */
+    }
+
+
+                    </style>
+                    <div class="bestselling-packages">
+                        <h2 class="titl">Bestselling Packages</h2>
+                        <div class="car-container">
+                            <div class="row">
+                                <div class="car">
+                                    <img src="img/char.img" alt="Chardham Yatra">
+                                    <div class="car-content">
+                                        <h3>Uttarakhand Chardham Yatra</h3>
+                                        <table>
+                                            <tr>
+                                                <th>Cost</th>
+                                                <td>₹7999/person</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Duration</th>
+                                                <td>7 Days</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Transport</th>
+                                                <td>By Road</td>
+                                            </tr>
+                                            <th colspan="2">  
+                                                <div><style></style></div>  <div class="register-button-container">
+                                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform"target="_blank">Register Now</a>
+                                            </div></th>
+                                        </table>
+                                     
+                                    </div>
+                                </div>
+                                <div class="car">
+                                    <img src="img/delhi.jpg" alt="Delhi Tour">
+                                    <div class="car-content">
+                                        
+                                        <h3>Delhi Tour</h3>
+                                        <table>
+                                            <tr>
+                                                <th>Cost</th>
+                                                <td>₹5999/person</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Duration</th>
+                                                <td>5 Days</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Transport</th>
+                                                <td>Road and Air</td>
+                                            </tr>
+                                            <th colspan="2">    <div class="register-button-container">
+                                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform"target="_blank">Register Now</a>
+                                            </div></th>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="car">
+                                    <img src="img/him.jpg" alt="Himachal Tour">
+                                    <div class="car-content">
+                                        <h3>Himachal Tour</h3>
+                                        <table>
+                                            <tr>
+                                                <th>Cost</th>
+                                                <td>₹13999/person</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Duration</th>
+                                                <td>6 Days</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Transport</th>
+                                                <td>By Road</td>
+                                            </tr>
+                                            <th colspan="2">    <div class="register-button-container">
+                                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform"target="_blank">Register Now</a>
+                                            </div></th>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="car">
+                                    <img src="img/karna.jpg" alt="Karnataka Tour">
+                                    <div class="car-content">
+                                        <h3>Karnataka Tour</h3>
+                                        <table>
+                                            <tr>
+                                                <th>Cost</th>
+                                                <td>₹4999/person</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Duration</th>
+                                                <td>8 Days</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Transport</th>
+                                                <td>Road and Air</td>
+                                            </tr>
+                                            <th colspan="2">    <div class="register-button-container">
+                                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform"target="_blank">Register Now</a>
+                                            </div></th>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+            
+                
+                </div>
+            </div>
+            <br /><br /><br /><br />
+        </section>
+        
+        <!--tours-->
+ 
+        <!-- About -->
+        <section id="about">
+            <div class="title">
+                <h1 class="font-color">About Us</h1>
+                <div class="line"></div>
+            </div>
+            <br />
+            <div id="about_us">
+                <div class="boxx">
+                    <div class="containerx">
+                        <input type="radio" name="slider" id="item-1" checked />
+                        <input type="radio" name="slider" id="item-2" />
+                        <input type="radio" name="slider" id="item-3" />
+                        <div class="cards">
+                            <label class="cardt" for="item-1" id="col-img-1">
+                                <img src="./img/carousel-img4.jpg" />
+                            </label>
+                            <label class="cardt" for="item-2" id="col-img-2">
+                                <img src="./img/carousel-img5.jpg" />
+                            </label>
+                            <label class="cardt" for="item-3" id="col-img-3">
+                                <img src="./img/carousel-img6.jpg" />
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <span id="about-quad"
+                        ><a href="#home">
+                                <h1
+                                    style="
+                                        font-family: var(--ff-montserrat);
+                                        color: white;
+                                    "
+                                >
+                                    Find that
+                                </h1>
+                                <br />
+                                <img
+                                    class="img2"
+                                    src="./img/mountain_dark.jpg"
+                                    width="200"
+                                    style="border-radius: 12%"
+                                />
+                                <br />
+                                <h1 class="logo" style="font-size: 50px">
+                                    YATRI
+                                </h1>
+                            
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- About -->
+
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <div class="review-card">
+                <p class="review-text">"YATRI provided an amazing experience! The trip to Ladakh was well organized and truly memorable."</p>
+                <div class="review-author">
+                    <img src="img\female.jpg" alt="Anisha Sharma" class="review-img">
+                    <p>Anisha Sharma</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"I loved the Kedarkanta trek. The guides were very knowledgeable and friendly. Highly recommended!"</p>
+                <div class="review-author">
+                    <img src="img\male.jpg" alt="Ravi Kumar" class="review-img">
+                    <p>Ravi Kumar</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <p class="review-text">"Ooty was breathtaking. Thanks to YATRI for making our trip hassle-free and enjoyable."</p>
+                <div class="review-author">
+                    <img src="img\female.jpg" alt="Sanya Gupta" class="review-img">
+                    <p>Sanya Gupta</p>
+                </div>
+            </div>
+            
+            <!-- Review Submission Form -->
+            <form id="review-form" onsubmit="addReview(event)">
+                <h3>Submit Your Review</h3>
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="file" id="photos" accept="image/*" multiple required>
+                <textarea id="review" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+        
+        <!-- Other sections of your website -->
+        
+        <script>
+            function addReview(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const photos = document.getElementById('photos').files;
+                const review = document.getElementById('review').value;
+                
+                if (photos.length === 0) {
+                    alert('Please select at least one photo.');
+                    return;
+                }
+                
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                
+                const reviewText = document.createElement('p');
+                reviewText.className = 'review-text';
+                reviewText.textContent = `"${review}"`;
+                
+                const reviewAuthor = document.createElement('div');
+                reviewAuthor.className = 'review-author';
+                
+                const authorName = document.createElement('p');
+                authorName.textContent = name;
+                
+                reviewAuthor.appendChild(authorName);
+                
+                reviewCard.appendChild(reviewText);
+                reviewCard.appendChild(reviewAuthor);
+                
+                const photosContainer = document.createElement('div');
+                photosContainer.className = 'photos-container';
+                
+                Array.from(photos).forEach(photo => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const reviewImg = document.createElement('img');
+                        reviewImg.src = e.target.result;
+                        reviewImg.alt = name;
+                        reviewImg.className = 'review-img';
+                        photosContainer.appendChild(reviewImg);
+                    };
+                    reader.readAsDataURL(photo);
+                });
+                
+                reviewCard.appendChild(photosContainer);
+                
+                document.getElementById('reviews').appendChild(reviewCard);
+                
+                document.getElementById('review-form').reset();
+            }
+        </script>
+
+        <!-- contact -->
+        <section id="contact">
+            <div class="title">
+                <h1 class="font-color">Contact Us</h1>
+                <div class="line"></div>
+            </div>
+            <div class="contact_us">
+        
+                <div class="cbox">
+                    <div>
+                        <p class="cbox-message">
+                            Prefer some other way ?<br />Reach us by using the
+                            details given below
+                        </p>
+                        <div class="cbox-line"></div>
+                    </div>
+                    <div class="c_boxx">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tourism@YATRI.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                            Mail: tourism@YATRI.com
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="c_boxx">
+                        <a href="tel:+91-12345-67890"
+                            ><i class="fa fa-phone"></i>
+                            Phone: (+91) 12345-67890
+                        </a>
+                    </div>
+                    <div class="c_boxx">
+                        <a href="https://www.google.com/maps?q=Dehradun,+Uttarakhand,+India" target="_blank">
+                            <i class="fa fa-map-marker"></i>
+                            Location: Dehradun, Uttarakhand, India
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- contact  -->
+        <!-- up scroll -->
+        <i class="arrow"  onclick="topFunction()" id="upbtn"></i>
+        <!-- end -->
+        <!--footer-->
+        <section class="footer">
+            <span
+                >Created By Pratyush Thapliyal <br>&#169; 2023 All rights
+                reserved.</span
+            >
+            <div class="social">
+                <li>
+                  
+                    <a
+                        href="https://github.com/Prat123459"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa fa-github"></i
+                    ></a>
+                    <a
+                        href="https://www.linkedin.com/in/pratyush-thapliyal-a074a6216/"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa fa-linkedin-square"></i
+                    ></a>
+                </li>
+            </div>
+        </section>
+        <!--footer-->
+
+        <script>
+            const menuBtn = document.querySelector(".menu-btn");
+            const navlinks = document.querySelector(".nav-links");
+
+            menuBtn.addEventListener("click", () => {
+                navlinks.classList.toggle("mobile-menu");
+            });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="js/script.js"></script>
+        <script>
+            function toggleDetails(link) {
+                var card = link.parentElement;
+                var details = card.querySelector('.more-details');
+        
+                if (details.style.display === 'block') {
+                    details.style.transform = 'scale(0)';
+                    setTimeout(function() {
+                        details.style.display = 'none';
+                    }, 300);
+                } else {
+                    details.style.display = 'block';
+                    details.style.transform = 'scale(1)';
+                }
+            }
+        </script>
+<script>
+    function toggleDetails(card) {
+        card.classList.toggle('active');
+    }
+
+    function toggleVisibility(element) {
+        var details = element.querySelector('.more-details');
+        details.style.transform = details.style.transform === 'scale(1)' ? 'scale(0)' : 'scale(1)';
+    }
+</script>
+    </body>
+</html>

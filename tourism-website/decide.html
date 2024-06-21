@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YATRI - Explore 30 Destinations</title>
+    <style>
+                body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+  
+
+        #map {
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup-content img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            margin-bottom: 10px;
+        }
+
+        .popup-content a {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-content a:hover {
+            background-color: #0056b3;
+        }
+
+        .register-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background-color: #218838;
+        }
+
+        .mapboxgl-popup-content {
+            max-width: 300px;
+        }
+
+        .mapboxgl-popup-close-button {
+            display: none;
+        }
+
+        .mapboxgl-marker {
+            cursor: pointer;
+        }
+
+        .mapboxgl-marker:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+<section id="decide">
+  <div class="title-container">
+    </div>
+    <div id="map"></div>
+</section>
+
+<!-- Include Mapbox library -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        mapboxgl.accessToken = 'pk.eyJ1IjoicHJhdDEyMzQiLCJhIjoiY2x4b2JkeTI5MDN5NTJxcXlhYzNmZXZwYSJ9.IG8EOL6P4RR85cwSOdbn1A'; // Replace with your Mapbox access token
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11', // Mapbox street style
+            center: [78.9629, 20.5937], // Centered on India
+            zoom: 4
+        });
+
+        var destinations = [
+            { name: "Kedarkanta", coords: [78.1100, 31.2456], img: "https://www.holidify.com/images/compressed/4309.jpg", time: "Winter", temperature: "10°C - 20°C", expense: "₹1000" },
+            { name: "Ooty", coords: [76.6932, 11.4064], img: "https://www.holidify.com/images/compressed/403.jpg", time: "Summer", temperature: "15°C - 25°C", expense: "₹1200" },
+            { name: "Ladakh", coords: [77.5619, 34.2268], img: "https://www.holidify.com/images/compressed/300.jpg", time: "Spring", temperature: "-10°C - 15°C", expense: "₹1500" },
+            { name: "Goa", coords: [74.1240, 15.2993], img: "https://www.holidify.com/images/compressed/476.jpg", time: "Monsoon", temperature: "25°C - 30°C", expense: "₹800" },
+            { name: "Manali", coords: [77.1892, 32.2432], img: "https://www.holidify.com/images/compressed/363.jpg", time: "Winter", temperature: "-5°C - 10°C", expense: "₹1100" },
+            { name: "Jaipur", coords: [75.7873, 26.9124], img: "https://www.holidify.com/images/compressed/322.jpg", time: "Summer", temperature: "30°C - 40°C", expense: "₹900" },
+            { name: "Agra", coords: [78.0081, 27.1767], img: "https://www.holidify.com/images/compressed/374.jpg", time: "Winter", temperature: "10°C - 20°C", expense: "₹1000" },
+            { name: "Varanasi", coords: [83.0076, 25.3176], img: "https://www.holidify.com/images/compressed/546.jpg", time: "Spring", temperature: "15°C - 25°C", expense: "₹1200" },
+            { name: "Shimla", coords: [77.1734, 31.1048], img: "https://www.holidify.com/images/compressed/243.jpg", time: "Summer", temperature: "20°C - 30°C", expense: "₹950" },
+            { name: "Rishikesh", coords: [78.2676, 30.0869], img: "https://www.holidify.com/images/compressed/1080.jpg", time: "Spring", temperature: "15°C - 25°C", expense: "₹1100" },
+            { name: "Darjeeling", coords: [88.2636, 27.0360], img: "https://www.holidify.com/images/compressed/236.jpg", time: "Monsoon", temperature: "20°C - 30°C", expense: "₹1000" },
+            { name: "Mysore", coords: [76.6394, 12.2958], img: "https://www.holidify.com/images/compressed/105.jpg", time: "Winter", temperature: "15°C - 25°C", expense: "₹900" },
+            { name: "Jaisalmer", coords: [70.9160, 26.9157], img: "https://www.holidify.com/images/compressed/1105.jpg", time: "Summer", temperature: "30°C - 40°C", expense: "₹1200" },
+            { name: "Udaipur", coords: [73.7125, 24.5854], img: "https://www.holidify.com/images/compressed/323.jpg", time: "Spring", temperature: "25°C - 35°C", expense: "₹1100" },
+            { name: "Munnar", coords: [77.0597, 10.0892], img: "https://www.holidify.com/images/compressed/1074.jpg", time: "Winter", temperature: "10°C - 20°C", expense: "₹950" },
+            { name: "Coorg", coords: [75.7378, 12.3375], img: "https://www.holidify.com/images/compressed/1069.jpg", time: "Summer", temperature: "20°C - 30°C", expense: "₹1000" },
+            { name: "Andaman Islands", coords: [92.6586, 11.7401], img: "https://www.holidify.com/images/compressed/1056.jpg", time: "Monsoon", temperature: "25°C - 30°C", expense: "₹1200" },
+            { name: "Ranthambore", coords: [76.5026, 26.0173], img: "https://www.holidify.com/images/compressed/1102.jpg", time: "Winter", temperature: "15°C - 25°C", expense: "₹1100" },
+            { name: "Hampi", coords: [76.4600, 15.3350], img: "https://www.holidify.com/images/compressed/170.jpg", time: "Spring", temperature: "25°C - 35°C", expense:        "₹1000" },
+            { name: "Sikkim", coords: [88.5122, 27.5325], img: "https://www.holidify.com/images/compressed/181.jpg", time: "Summer", temperature: "20°C - 30°C", expense: "₹900" },
+            { name: "Pondicherry", coords: [79.8083, 11.9416], img: "https://www.holidify.com/images/compressed/532.jpg", time: "Monsoon", temperature: "25°C - 35°C", expense: "₹1100" },
+            { name: "Kanyakumari", coords: [77.5385, 8.0883], img: "https://www.holidify.com/images/compressed/195.jpg", time: "Winter", temperature: "15°C - 25°C", expense: "₹1000" },
+            { name: "Nainital", coords: [79.4590, 29.3919], img: "https://www.holidify.com/images/compressed/367.jpg", time: "Spring", temperature: "10°C - 20°C", expense: "₹1200" },
+            { name: "Khajuraho", coords: [79.9190, 24.8318], img: "https://www.holidify.com/images/compressed/578.jpg", time: "Summer", temperature: "25°C - 35°C", expense: "₹1100" },
+            { name: "Alleppey", coords: [76.3375, 9.4981], img: "https://www.holidify.com/images/compressed/433.jpg", time: "Monsoon", temperature: "25°C - 30°C", expense: "₹1000" },
+            { name: "Mahabalipuram", coords: [80.1701, 12.6125], img: "https://www.holidify.com/images/compressed/398.jpg", time: "Winter", temperature: "20°C - 30°C", expense: "₹950" },
+            { name: "Kochi", coords: [76.2711, 9.9312], img: "https://www.holidify.com/images/compressed/231.jpg", time: "Spring", temperature: "25°C - 35°C", expense: "₹1100" },
+            { name: "Kumarakom", coords: [76.4282, 9.5973], img: "https://www.holidify.com/images/compressed/1053.jpg", time: "Summer", temperature: "20°C - 30°C", expense: "₹1000" },
+            { name: "Pushkar", coords: [74.5509, 26.4870], img: "https://www.holidify.com/images/compressed/1540.jpg", time: "Winter", temperature: "15°C - 25°C", expense: "₹1200" },
+            { name: "Haridwar", coords: [78.1661, 29.9457], img: "https://www.holidify.com/images/compressed/124.jpg", time: "Spring", temperature: "20°C - 30°C", expense: "₹1100" },
+            // Add more destinations with random values here
+        ];
+
+        destinations.forEach(function (destination) {
+            var popupContent = '<div class="popup-content">' +
+                '<h3>' + destination.name + '</h3>' +
+                '<img src="' + destination.img + '" alt="' + destination.name + '">' +
+                '<p><strong>Best Time to Visit:</strong> ' + destination.time + '</p>' +
+                '<p><strong>Temperature:</strong> ' + destination.temperature + '</p>' +
+                '<p><strong>Total Expense:</strong> ' + destination.expense + '</p>' +
+                '<a href="https://www.google.com/maps/search/?api=1&query=' + destination.coords[1] + ',' + destination.coords[0] + '" target="_blank">View Location</a><br>' +
+                '<a href="https://docs.google.com/forms/d/e/1FAIpQLSeo1O925-oaZnayU5w-89cyoGb-PkkFktDQkur7cwi3t81wiw/viewform" target="_blank" class="register-btn">Register Now</a>' +
+                '</div>';
+
+            var popup = new mapboxgl.Popup().setHTML(popupContent);
+
+            new mapboxgl.Marker()
+                .setLngLat(destination.coords)
+                .setPopup(popup)
+                .addTo(map);
+        });
+    });
+</script>
+
+</body>
+</html>
