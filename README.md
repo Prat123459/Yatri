@@ -59,7 +59,3 @@ We welcome contributions to improve YATRI. To contribute:
 6. Create a new Pull Request.
 
 ---
-## Contributing
-We welcome contributions from the community! Fork the repository and submit pull requests for feature enhancements or bug fixes.
-
-
